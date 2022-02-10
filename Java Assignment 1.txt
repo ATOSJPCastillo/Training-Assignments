@@ -1,0 +1,146 @@
+1. Accept a numeric array data for 5 numbers and find the largest number.
+
+package mypack;
+import java.util.Scanner;
+public class JavaAssignment1 {
+
+    public static void main(String[] args) {
+
+        int num, highest;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of array elements:");
+        num = sc.nextInt();
+        int a[] = new int[num];
+        
+        
+        System.out.println("Enter the numbers:");
+        for(int i = 0; i < num; i++)
+        {
+        a[i] = sc.nextInt();
+        }
+        
+        
+        highest = a[0];
+        for(int i = 0; i < num; i++)
+        {
+        if(highest < a[i])
+        {
+        highest = a[i];
+        }
+        
+        
+        }
+        System.out.println("Highest value in the table is:" +highest);
+        }
+
+
+}
+
+-------------------------------------------------------------------------
+2. Create methods to find the cube and square of a given number.
+
+package mypack;
+import java.util.*;
+public class JavaAssignment2 {
+
+	public static void main(String[] args) {
+		
+        Scanner s = new Scanner(System.in);
+        int num;
+
+        System.out.print("Enter a number: ");
+        num = s.nextInt();
+
+        System.out.println("Square of " + num + " is: " + Math.pow(num, 2));
+        
+        System.out.println("Cube of " + num + " is: " + Math.pow(num, 3));
+    }
+
+}
+
+-------------------------------------------------------------------------
+3. Create a method to swap two numbers.
+
+package mypack;
+import java.util.Scanner;  
+public class JavaAssignment3  {  
+
+	public static void main(String args[])  {
+	int x, y;  
+	Scanner sc = new Scanner(System.in);  
+	
+	System.out.print("Enter first number: ");  
+	x = sc.nextInt();  
+	
+	System.out.print("Enter second number: ");  
+	y = sc.nextInt();  
+	
+	System.out.println("\nBefore Swapping:\nfirst = "+x+"\nsecond = "+y);  
+	swap(x, y);  
+	
+	}  
+	
+	public static void swap(int a, int b)  
+	{       
+		a = a + b;  
+		b = a - b;  
+		a = a - b;  
+		
+		System.out.println("\nAfter Swapping:\nfirst = "+a+"\nsecond = "+b);  
+	}  
+} 
+
+-------------------------------------------------------------------------
+4. Write the switch case construct perform the calculations. 
+
+package mypack;
+import java.util.Scanner;
+public class JavaAssignment4 {
+	
+  public static void main(String[] args) {
+
+    char operator;
+    int num1, num2, res;
+
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("Enter the first number");
+    num1 = input.nextInt();
+
+    System.out.println("Enter the second number");
+    num2 = input.nextInt();
+
+    System.out.println("Choose operator: ( +, -, *, / )");
+    operator = input.next().charAt(0);
+    
+    
+    switch (operator) {
+
+      case '+':
+        res = num1 + num2;
+        System.out.println(num1 + " + " + num2 + " = " + res);
+        break;
+
+      case '-':
+        res = num1 - num2;
+        System.out.println(num1 + " - " + num2 + " = " + res);
+        break;
+
+      case '*':
+        res = num1 * num2;
+        System.out.println(num1 + " * " + num2 + " = " + res);
+        break;
+
+      case '/':
+        res = num1 / num2;
+        System.out.println(num1 + " / " + num2 + " = " + res);
+        break;
+
+      default:
+        System.out.println("Invalid operator!");
+        break;
+    }
+
+    input.close();
+  }
+}
