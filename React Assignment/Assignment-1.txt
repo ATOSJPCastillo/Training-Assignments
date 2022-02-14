@@ -1,0 +1,208 @@
+React Assignment #1 
+
+1.)Install NodeJs, Visual studio code 
+
+-------------------------------------------------------------------------------------------------
+2.)create a Welcome component  to greet the user using a javascript function, 
+with a property called as name. Apply some css styling.Use the component in App  component. 
+
+--- Welcome Component
+import React from "react";
+import './welcome-style.css'
+
+export default class Welcome extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { name: "John Paul" };
+    }
+
+    render() {
+        return (
+            <div className="myDiv" >
+                <h1 className="myStyle">Hello, {this.state.name}</h1>
+            </div>
+        );
+    }
+}
+
+--- welcome-style.css
+.myStyle {
+font-size: 40px;
+color: '#2B60DE';
+text-align: 'center';      
+}
+
+.myDiv  {
+margin: '20px';
+border: '50px';
+background-color: aquamarine;
+width: 'auto';
+position: 'relative';
+border-radius: 10px;
+position: relative;
+width: 30%;
+margin: auto;
+text-align: center;
+}
+
+
+--- App Component
+import './App.css';
+import React from 'react';
+import Welcome from './Welcome';
+import Add from './Add';
+import Age from './Age';
+
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Welcome />
+        <Add />
+        <br></br>
+        <Age />
+      </div>
+    )
+  }
+}
+
+export default App;
+
+
+-------------------------------------------------------------------------------------------------
+3.)Create a Component to add two numbers. 
+
+------ add-style.css
+
+.mainContainer{
+  background-color: rgb(53, 177, 171);
+  border: 2px solid black;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  width: 30%;
+  margin: auto;
+}
+
+.inputStyle{
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.outStyle{
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.83);
+}
+
+------ Add Component
+
+import React from 'react'
+import './add-style.css'
+
+export default class Add extends React.Component {
+
+    // state = { num1: '', num2: '', total: '' }     // You can use a single line, or use the long way... like show below   ..
+    constructor(props) {
+        super(props)
+        this.state = { num1: '', num2: '', total: '' }
+    }
+
+
+    exe1() {
+        console.log("Num1: ", this.state.num1, " - Num2: ", this.state.num2)
+        this.setState({ total: parseInt(this.state.num1) + parseInt(this.state.num2) })
+        console.log(this.state)
+    }
+
+    render() {
+        return (
+            <div className="mainContainer">
+                <h1>Add Two Numbers</h1>
+
+                <input type="text" className="inputStyle" value={this.state.num1} onChange={(eve) => { this.setState({ num1: eve.target.value }) }} />
+                <br /><br />
+
+                <input type="text" className="inputStyle" value={this.state.num2} onChange={(eve) => { this.setState({ num2: eve.target.value }) }} />
+                <br /><br />
+
+                <button onClick={() => { this.exe1() }} >Add Numbers</button>
+                <br /><br />
+
+                <input type="text" className="outStyle" value={this.state.total} />
+
+                <br /><br />
+            </div>
+        )
+    }
+}
+
+-------------------------------------------------------------------------------------------------
+4.)Modify the card component to add a props age and perform the validation,to check it’s a number. 
+
+----- Age-style.css
+
+.mainCont{
+  background-color: rgb(180, 132, 219);
+  border: 2px solid black;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  width: 30%;
+  margin: auto;
+}
+
+.inStyle{
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+
+----- Age Component
+
+import React from "react";
+import './Age-style.css'
+import PropTypes from 'prop-types';
+
+export default class Age extends React.Component {
+    constructor() {
+        super();
+        this.state = { value: '' };
+        this.onChange = this.onChange.bind(this)
+    }
+
+    onChange(e) {
+        const re = /^[0-9\b]+$/;
+        if (e.target.value === '' || re.test(e.target.value)) {
+            this.setState({ value: e.target.value })
+        }
+    }
+
+    render() {
+        return (
+            <div className="mainCont" >
+                <h1>Type your Age</h1>
+
+                <input value={this.state.value} onChange={this.onChange} className="inStyle" />
+                <p>----------------</p>
+            </div>
+        );
+
+    }
+}
+
+Age.propTypes = {
+    age: PropTypes.number.isRequired
+}
+
+
+-------------------------------------------------------------------------------------------------
+5.)What is Virtual DOM in ReactJS 
+
+React uses virtual DOM to enhance its performance. It uses the observable to detect state and prop changes. 
+React uses an efficient diff algorithm to compare the versions of virtual DOM. It then makes sure that batched 
+updates are sent to the real DOM for repainting or re-rendering of the UI.
+ 
+
+ 
